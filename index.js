@@ -4,11 +4,12 @@ const mongoose = require('mongoose'); // Import mongoose into the file
 const bodyParser = require('body-parser'); // Import body-parser
 const cors = require('cors'); // Import CORS (Cross-Origin Resource-Sharing)
 const passport = require('passport');
-
+const ejs = require('ejs');
 const routes = require('./routes/users');
 
 const server = express(); // Make a new express server
 server.use(cors());
+server.set('view engine','ejs');
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(bodyParser.json());
 server.use(passport.initialize());
@@ -25,11 +26,8 @@ mongoose.connection.once('open', ()=>{ //
     console.log("Database is connected");
 });
 
-server.listen(process.env.PORT||3000, ()=>{
+server.listen(process.env.PORT, ()=>{
     console.log('the port is', process.env.PORT);
     console.log("Server is running at http://localhost:"+process.env.PORT)
 });
 
-// server.listen(3000, ()=>{
-//     console.log("Server is running http://localhost:3000/")
-// });
