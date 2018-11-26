@@ -25,7 +25,11 @@ mongoose.connection.once('open', ()=>{ //
     console.log("Database is connected");
 });
 
-server.listen(process.env.PORT, ()=>{
+server.listen(process.env.PORT||3000, ()=>{
     console.log('the port is', process.env.PORT);
     console.log("Server is running at http://localhost:"+process.env.PORT)
 });
+
+// server.listen(3000, ()=>{
+//     console.log("Server is running http://localhost:3000/")
+// });

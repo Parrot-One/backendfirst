@@ -12,6 +12,11 @@ router.get('/', (req, res)=>{
     res.send("Welcome to Homepage");
 });
 
+router.get('/about-page', (req, res)=>{
+    let name = req.params.name;
+    res.send("Welcome To About Page " + name);
+});
+
 router.get('/user/:name', (req, res)=>{
     let name = req.params.name;
     res.send("Welcome back " + name);
